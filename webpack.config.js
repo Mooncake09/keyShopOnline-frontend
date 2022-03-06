@@ -22,7 +22,12 @@ module.exports = {
     compress: true,
     port: 9090,
     proxy: {
-      '/api': "http://localhost:9000"
+      // '/api': "http://localhost:9000",
+      '/swagger': "http://localhost:9000", 
+      '/api': {
+        target: "http://localhost:9000",
+        secure: false
+      } 
     },
     historyApiFallback: true
   },
