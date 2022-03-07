@@ -7,7 +7,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
    });
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   mode: "development",
   output: {
     filename: "bundle.js",
@@ -38,7 +38,15 @@ module.exports = {
         exclude: /node_modules/,
         use: "babel-loader"
       },
-    ], 
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [htmlPlugin]
 }
